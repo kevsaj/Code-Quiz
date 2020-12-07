@@ -1,4 +1,3 @@
-
 var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
@@ -35,9 +34,9 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton) 
 
         quizContainer.innerHTML = output.join('');
     }
-    
 
-    function showResults(questions, quizContainer, resultsContainer) {
+
+    function submitButton(questions, quizContainer, resultsContainer) {
 
     }
 
@@ -45,8 +44,30 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton) 
     showQuestions(questions, quizContainer);
 
     submitButton.onclick = function () {
-        showResults(questions, quizContainer, resultsContainer);
+        submitButton(questions, quizContainer, resultsContainer);
     }
+}
+
+function startTimer() {
+    var tobj = document.getElementById("timespent")
+    var t = "0:00";
+    var s = 00;
+    var d = new Date();
+    var timeint = setInterval(function () {
+        s += 1;
+        d.setMinutes("0");
+        d.setSeconds(s);
+        min = d.getMinutes();
+        sec = d.getSeconds();
+        if (sec < 10) sec = "0" + sec;
+        document.getElementById("timespent").value = min + ":" + sec;
+    }, 1000);
+    tobj.value = t;
+}
+if (window.addEventListener) {
+    window.addEventListener("load", startTimer);
+} else if (window.attachEvent) {
+    window.attachEvent("onload", startTimer);
 }
 
 
